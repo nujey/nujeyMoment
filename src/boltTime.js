@@ -14,7 +14,7 @@ class boltTime {
   /**
    * 返回最近的多少天----数组罗列每一天
    */
-  getLastSevenDay = (type, num, dataType) => {
+  getLastPeroid = (type, num, dataType) => {
     let dataArray = []
     for (let i = 0; i < num; i++) {
       dataArray.push(nextNumberDay(type, i, dataType))
