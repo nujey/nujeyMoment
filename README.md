@@ -9,6 +9,11 @@
   var boltTime = require(./boltTime.js)
 # 新建实例类
   const boltTime = new boltTime()
+# getYear
+  boltTime.getYear()
+  ## 参数 无
+  ## 返回值
+    当前的年份
 # getLastPeroid
   boltTime.getLastPeroid('days', 3, 'MM-DD')
   ## 参数 
