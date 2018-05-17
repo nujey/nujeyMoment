@@ -21,6 +21,9 @@ class boltTime {
     }
     return dataArray
   }
+  /**
+   * 返回星期几 可以是礼拜几 也可以是周几
+   */
 }
 /**
  * 获取日期的格式 向后兼容
