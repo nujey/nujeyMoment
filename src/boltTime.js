@@ -24,6 +24,16 @@ class boltTime {
   /**
    * 返回星期几 可以是礼拜几 也可以是周几
    */
+  getWeek = (type) => {
+    let weekArray = []
+    if (type === '0') {
+      // 数字的星期
+      weekArray.push(Moment().day())
+    } else {
+      weekArray.push(Moment().weekday())
+    }
+    return weekArray
+  }
 }
 /**
  * 获取日期的格式 向后兼容
