@@ -34,6 +34,14 @@ class boltTime {
     }
     return weekArray
   }
+  /**
+   * 返回几小时后
+   */
+  getFutureHours = (time, num, dataTYpe) => {
+    let str = ''
+    str = nextHours(time, num, dataTYpe)
+    return str
+  }
 }
 /**
  * 获取日期的格式 向后兼容
@@ -43,6 +51,15 @@ class boltTime {
  */
 function nextNumberDay(type = 'days', number = 7, dataType = 'YYYY-MM-DD') {
   return Moment().add(number, type).format(dataType)
+}
+/**
+ * 获取几个小时之后的时间
+ * time 时间基准点 往后几小时
+ * num 往后几小时
+ * dateType 返回时间格式
+ */
+function nextHours(time, num, dateType) {
+  return Moment(time).add(num, 'hours').format('YYYY-MM-DD HH:mm')
 }
 
 
