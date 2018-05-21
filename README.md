@@ -22,3 +22,15 @@
       dataType ----- String 日期类型 默认 'YYYY-MM-DD'
   ## 返回值 Array
     ['05-15', '05-16', '05-17']
+# getFutureHours
+  boltTime.getFutureHours(type, num, datatype)
+  ## 参数
+    类型、数量、日期格式
+  ## 返回值
+    默认几个小时后 2018-05-20 06:00:00
+# compareTime 比较当前设备的时间和某个时间的时间差是不是在90秒之内
+  ## 参数
+    时间点 2018-05-20 00:00:00
+    当然，你也可以设定是多久之内
+  ## 返回值
+    true false
