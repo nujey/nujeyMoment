@@ -42,6 +42,31 @@ class boltTime {
     str = nextHours(time, num, dataTYpe)
     return str
   }
+  /**
+   * 对比当前时间和服务器时间
+   * serviceTime 系统时间
+   */
+  compareTime = (serviceTime) => {
+    let timeArray = {}
+    let timeStatus = true
+    // 本地手机时间
+    timeArray.currentTime = Moment().valueOf()
+    // 90秒之前的时间
+    timeArray.prevTime = Moment(serviceTime).add(90, 's').valueOf()
+    // 90秒之后的时间
+    timeArray.nextTime = Moment(serviceTime).add(-90, 's').valueOf()
+    // 服务器当前时间
+    timeArray.serviceTime = Moment(serviceTime).valueOf()
+
+    if (90000 < Math.abs(timeArray.serviceTime - timeArray.currentTime)) {
+      console.log('手机当前时间与系统时间不匹配，请重置手机时间')
+      timeStatus = false
+    } else {
+      console.log('当前时间正确，可以开门')
+      timeStatus = true
+    }
+    return timeStatus
+  }
 }
 /**
  * 获取日期的格式 向后兼容
