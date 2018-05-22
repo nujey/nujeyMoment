@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
+</head>
+<body>
+  <div id="app">
+    <div>
+      {{msg}}
+    </div>
+    <ul>
+      <li v-for="(item, index) in list" :key="index">
+        <span>{{item.text}}</span>
+        <button @click="handleOpen(item)">{{item.opentext}}-{{item.id}}</button>
+      </li>
+    </ul>
+  </div>
+  <script>
+    var app = new Vue({
+      el: "#app",
+      data: {
+        msg: '开门倒计时测试',
+        list: [{
+          id: 1,
+          num: 10,
+          text: '门锁1',
+          opentext: '开门',
+          openStatus: false
+        }, {
+          id: 2,
+          num: 10,
+          text: '门锁2',
+          opentext: '开门',
+          openStatus: false
+        }, {
+          id: 3,
+          num: 10,
+          text: '门锁3',
+          opentext: '开门',
+          openStatus: false
+        }]
+      },
+      methods: {
+        handleOpen(item) {
+          console.log(item.id, item.openStatus, 2222)
+          if (item.openStatus) {
+            return false
+          }
+          console.log(item)
+          if (item.num < 10) {
+            console.log('不要点了')
+            return false
+          }
+          clearInterval(timer)
+          const that = this
+          var timer = setInterval(() => {
+            if (item.num > 0) {
+              item.num --
+              that.list.forEach(element => {
+                if(element.id === item.id) {
+                  element.opentext = item.num + 's'
+                  this.openStatus = false
+                }
+              });
+            } else if (item.num === 0){
+              clearInterval(timer)
+              that.list.forEach(element => {
+                if (element.id === item.id) {
+                  element.num = 10
+                  element.opentext = '开门'
+                  this.openStatus = true
+                }
+              });
+            }
+          }, 1000)
+        }
+      }
+    })
+  </script>
+</body>
+</html>
